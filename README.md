@@ -7,11 +7,11 @@ La intención de este proyecto es ayudar al estudio de los alumnos de la USM cre
 
 
 ### Integrantes
-```
+
 - Carlos Lagos (P201)
 - Vicente Muñoz  (P201)
 - Reinaldo Ramirez (P201)
-```
+
 
 ## Instalación y modo de uso
 
@@ -42,7 +42,7 @@ php artisan migrate:rollback     (Deshacer la última migración ejecutada y reg
 php artisan migrate:reset     (Deshacer todas las migraciones de la base de datos)
 ```
 
-### Test
+### Tests
 
 _No creados._
 
