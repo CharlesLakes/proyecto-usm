@@ -1,15 +1,15 @@
 # Proyecto IWG (nombre por definir)
 
-## Informaci�n general
+## Información general
 
-### Descripci�n proyecto
-La intenci�n de este proyecto es ayudar al estudio de los alumnos de la USM creando un espacio colaborativo  donde se podr�n hacer cuestionarios o videos hechos por alumnos.
+### Descripción proyecto
+La intención de este proyecto es ayudar al estudio de los alumnos de la USM creando un espacio colaborativo donde se podrán hacer cuestionarios o videos hechos por alumnos.
 
 
 ### Integrantes
 ```
 - Carlos Lagos (P201)
-- Vicente Mu�oz  (P201)
+- Vicente Muñoz  (P201)
 - Reinaldo Ramirez (P201)
 ```
 
