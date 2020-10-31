@@ -1,2 +1,11 @@
-# proyecto-usm
-Repositorio que serÃ¡ el blog y el contenedor de el proyecto de IWG
+# new Aula
+...
+## Datos
+...
+### Integrantes
+...
+Reinaldo Ramirez (ADC)
+Vicente Muñoz (MID)
+Carlos Lagos (TOP)
+
+
