@@ -25,9 +25,10 @@ _Nota: Registra estos programas en la PATH._
 
 ### Instalación de paquetes
 
-Ejecutar el siguiente comando en la carpeta de el repositorio.
+Ejecutar los siguientes comandos en la carpeta de el repositorio.
 ```
 composer install
+composer run post-root-package-install     (Por si no existe el archivo .env)
 ```
 
 ### Comandos artisan
