@@ -63,16 +63,16 @@ Creación de el repositorio-blog y creación de el proyecto en laravel - 31/10/2
 
 ### Carlos Lagos
 
--Crear migraciones y modelos de el usuario
--Crear controladores de el login
+-   Crear migraciones y modelos de el usuario
+-   Crear controladores de el login
 
 ### Vicente Muños
 
--Aprender php y laravel
--Programar rutas de el login
+-   Aprender php y laravel
+-   Programar rutas de el login
 
 ### Reinaldo Ramirez
 
--Aprender css y javascript
--Diseñar el login y register
--Configurar peticion al backend en el form
+-   Aprender css y javascript
+-   Diseñar el login y register
+-   Configurar peticion al backend en el form
