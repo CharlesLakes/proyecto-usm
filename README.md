@@ -3,29 +3,30 @@
 ## Información general
 
 ### Descripción proyecto
-La intención de este proyecto es ayudar al estudio de los alumnos de la USM creando un espacio colaborativo donde se podrán hacer cuestionarios o videos hechos por alumnos.
 
+La intención de este proyecto es ayudar al estudio de los alumnos de la USM creando un espacio colaborativo donde se podrán hacer cuestionarios o videos hechos por alumnos.
 
 ### Integrantes
 
-- Carlos Lagos (P201)
-- Vicente Muñoz  (P201)
-- Reinaldo Ramirez (P201)
-
+-   Carlos Lagos (P201)
+-   Vicente Muñoz (P201)
+-   Reinaldo Ramirez (P201)
 
 ## Instalación y modo de uso
 
 ### Requerimientos
 
 Tener instalado lo siguiente:
-- <a href="https://www.php.net/downloads.php">PHP</a>
-- <a href="https://getcomposer.org/">Composer</a>
+
+-   <a href="https://www.php.net/downloads.php">PHP</a>
+-   <a href="https://getcomposer.org/">Composer</a>
 
 _Nota: Registra estos programas en la PATH._
 
 ### Instalación de paquetes
 
 Ejecutar los siguientes comandos en la carpeta de el repositorio.
+
 ```
 composer install
 composer run post-root-package-install     (Por si no existe el archivo .env)
@@ -34,6 +35,7 @@ composer run post-root-package-install     (Por si no existe el archivo .env)
 ### Comandos artisan
 
 Lista de algunos comandos:
+
 ```
 php artisan serve     (Desplegar en modo de desarrollo)
 php artsian make:model  Nombre   (Crear Modelo, si se agrega -m al final se crea un modelo con migración)
@@ -47,7 +49,6 @@ php artisan migrate:reset     (Deshacer todas las migraciones de la base de dato
 
 _No creados._
 
-
 ## Modo de trabajo
 
 Se trabajara vía pull request para tener un mayor control de los cambios en la rama maestra
@@ -58,10 +59,20 @@ Se trabajara vía pull request para tener un mayor control de los cambios en la 
 Creación de el repositorio-blog y creación de el proyecto en laravel - 31/10/2020
 ```
 
+## Metas semanales
 
+### Carlos Lagos
 
+-Crear migraciones y modelos de el usuario
+-Crear controladores de el login
 
+### Vicente Muños
 
+-Aprender php y laravel
+-Programar rutas de el login
 
+### Reinaldo Ramirez
 
-
+-Aprender css y javascript
+-Diseñar el login y register
+-Configurar peticion al backend en el form
