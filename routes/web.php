@@ -18,5 +18,6 @@ use App\Http\Controllers\PageController;
 
 
 Route::get('/',[PageController::class,'inicio'])->name('index');
+Route::get("login", [LoginController::class]);
 
 
