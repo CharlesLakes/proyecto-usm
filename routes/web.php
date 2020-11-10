@@ -13,10 +13,10 @@ use App\Http\Controllers\PageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
-
 Route::get('/',[PageController::class,'inicio'])->name('index');
 
+Route::get("login", [LoginController::class, "formLogin"])->name("login");
+Route::post("login", [LoginController::class, "processLogin"])->name("processLogin");
 
+Route::get("register",[LoginController::class, "formRegister"])->name("register");
+Route::get("register",[LoginController::class, "processRegister"])->name("processregister");
