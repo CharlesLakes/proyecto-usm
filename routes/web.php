@@ -20,4 +20,4 @@ Route::get("login", [LoginController::class, "formLogin"])->name("login");
 Route::post("login", [LoginController::class, "processLogin"])->name("processLogin");
 
 Route::get("register",[LoginController::class, "formRegister"])->name("register");
-Route::get("register",[LoginController::class, "processRegister"])->name("processregister");
+Route::get("register",[LoginController::class, "processRegister"])->name("processRegister");
