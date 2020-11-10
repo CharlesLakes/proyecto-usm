@@ -13,11 +13,13 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',[PageController::class,'inicio'])->name('index');
-Route::get("login", [LoginController::class, "formLogin"]);
+// Route web
+Route::get("/",[PageController::class,'inicio'])->name('index');
 
-Route::get("login", [LoginController::class, "formLogin"])->name("login");
-Route::post("login", [LoginController::class, "processLogin"])->name("processLogin");
+// Route Login
+Route::get("/login", [LoginController::class, "formLogin"])->name("login");
+Route::post("/login", [LoginController::class, "processLogin"])->name("processLogin");
 
-Route::get("register",[LoginController::class, "formRegister"])->name("register");
-Route::get("register",[LoginController::class, "processRegister"])->name("processRegister");
+// Route register
+Route::get("/register",[LoginController::class, "formRegister"])->name("register");
+Route::post("/register",[LoginController::class, "processRegister"])->name("processRegister");
