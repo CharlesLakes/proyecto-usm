@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +14,7 @@ use App\Http\Controllers\PageController;
 |
 */
 Route::get('/',[PageController::class,'inicio'])->name('index');
+Route::get("login", [LoginController::class, "formLogin"]);
 
 Route::get("login", [LoginController::class, "formLogin"])->name("login");
 Route::post("login", [LoginController::class, "processLogin"])->name("processLogin");
