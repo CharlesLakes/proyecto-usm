@@ -23,7 +23,7 @@ class LoginController extends Controller
     }
 
     /* Procesamiento de login o regiter */
-    public function processLogin(){
+    public function processLogin(Request $request){
          /* Analizando formato */
          $credentials = $request->validate([
             'email' => 'email|required|string',
@@ -40,27 +40,29 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'username' => 'required|alpha',
             'email' => 'email|required|string',
-            'name' => 'required|string',
-            'password' => 'required|string',
+            'password' => 'required|string|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
             're_password' => 'required|string',
         ]);
-
         if($credentials['password'] != $credentials['re_password']){
-            return back()->withErrors(['msg','La controseñas ingresadas no coinciden.']);
+            return back()->withErrors(['msg' => 'La controseñas ingresadas no coinciden.']);
         }
         if(User::where('username',$credentials['username'])->first() != NULL){
-            return back()->withErrors(['msg','Ya existe un usuario con ese username.']);
+            return back()->withErrors(['msg' => 'Ya existe un usuario con ese username.']);
         }
-        if(User::where('email',$credentials['email'])->first() != NULL){
-            return back()->withErrors(['msg','Ya existe un usuario con ese correo.']);
+        if(User::where('email',strtolower($credentials['email']))->first() != NULL){
+            return back()->withErrors(['msg' => 'Ya existe un usuario con ese correo.']);
+        }
+        if(!strpos(strtolower($credentials['email']),"@usm.cl")){
+            return back()->withErrors(['msg' => 'El correo ingresado no es @usm.cl']);
         }
 
         /* Registrando */
         User::create([
+            'role' => 'user',
             'username' => $credentials['username'],
-            'email' => $credentials['email'],
+            'email' => strtolower($credentials['email']),
             'password' => $credentials['password'],
-            'name' => strtoupper($credentials['full_name'])
+            'email_verification' => 0
         ]);
 
         return redirect()->route('index');
