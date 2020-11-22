@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AsignaturaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +26,10 @@ Route::get("/logout",[LoginController::class, "logout"]);
 // Route register
 Route::get("/register",[LoginController::class, "formRegister"])->name("register");
 Route::post("/register",[LoginController::class, "processRegister"])->name("processRegister");
+
+
+// Asignaturas
+Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
+
+Route::post("/asignatura/inscripción", [AsignaturaController::class, "inscripcion"])->name("inscripcion");
 
