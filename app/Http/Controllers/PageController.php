@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 class PageController extends Controller
 {
     public function inicio(){
-
-        return "Hola mundo";
+        if(Auth::check()){
+            return "Logeado - <a href='/logout'>cerrar sesión</a>";
+        }
+        return "No logeado - <a href='/login'>Login</a>";
         /*
         if(Auth::check()){
             
@@ -17,5 +19,8 @@ class PageController extends Controller
         }
         return view('index');
         */
+    }
+    public function panel(){
+        return "logeado";
     }
 }

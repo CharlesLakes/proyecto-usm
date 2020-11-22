@@ -12,6 +12,12 @@ La intención de este proyecto es ayudar al estudio de los alumnos de la USM cre
 -   Vicente Muñoz (P201)
 -   Reinaldo Ramirez (P201)
 
+### Teconologias
+
+-   PHP con el framework Laravel
+-   Javascript con el framework JQuery
+-   CSS y HTML para la estructura y estilo (Sin librerias)
+
 ## Instalación y modo de uso
 
 ### Requerimientos
@@ -57,22 +63,36 @@ Se trabajara vía pull request para tener un mayor control de los cambios en la 
 
 ```
 Creación de el repositorio-blog y creación de el proyecto en laravel - 31/10/2020
+Creación de login/register  - 13/11/2020
+Reunión de organización para las dos semanas antes de el adelanto - 17/11/2020
 ```
 
 ## Metas semanales
 
-### Carlos Lagos
+### Metas Grupales
 
--   Crear migraciones y modelos de el usuario
--   Crear controladores de el login
+-   Creación de pagina de bienvenida
+-   Creación de pagina para inscribirse a las asignaturas
+-   Creación de pagina post - login
 
-### Vicente Muños
+### Metas Personales
 
--   Aprender php y laravel
--   Programar rutas de el login
+#### Carlos Lagos
 
-### Reinaldo Ramirez
+-   Convertir en frontend el diseño de la bienvenida
+-   Convertir en frontend el diseño de el post-login
+-   Estructurar los modelos de las quiz
+-   Estructurar los modelos para las asignaturas inscritas
 
--   Aprender css y javascript
--   Diseñar el login y register
--   Configurar peticion al backend en el form
+#### Vicente Muños
+
+-   Crear las rutas y controladores de bienvenida
+-   Crear las rutas y controladres de el post-login
+-   Resivir las peticiones de frontend para la elección de las asignaturas
+
+#### Reinaldo Ramirez
+
+-   Diseñar la pagina de bienvenida
+-   Diseñar la pagina post-login
+-   Convertir en frontend el diseño de la bienvenida
+-   Convertir en frontend el diseño de el post-login

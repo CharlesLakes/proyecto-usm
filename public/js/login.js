@@ -22,6 +22,7 @@ function comprobarInput() {
 
 $(document).ready(function () {
     $(window).on("load", procesamientoDeDiagonal);
+    $(window).on("resize", procesamientoDeDiagonal);
     if (
         (!$(window).innerWidth() < $(window).innerHeight() &&
             $(window).innerWidth() < 600) ||
@@ -36,9 +37,8 @@ $(document).ready(function () {
                         : $(window).innerWidth()
                 ) + "px",
         });
-    } else {
-        $(window).on("resize", procesamientoDeDiagonal);
     }
+
     if ($("#app .container-form form").children().length <= 3) {
         $("#app .container").css({
             height: "500px",
