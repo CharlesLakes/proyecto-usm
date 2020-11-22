@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AsignaturaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +24,8 @@ Route::post("/login", [LoginController::class, "processLogin"])->name("processLo
 // Route register
 Route::get("/register",[LoginController::class, "formRegister"])->name("register");
 Route::post("/register",[LoginController::class, "processRegister"])->name("processRegister");
+
+// Asignaturas
+Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
+
+Route::post("/asignatura/inscripción", [AsignaturaController::class, "inscripcion"])->name("inscripcion");
