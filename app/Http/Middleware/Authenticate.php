@@ -3,7 +3,10 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Request;
 use App\Models\User;
+use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate extends Middleware
 {
@@ -23,10 +26,13 @@ class Authenticate extends Middleware
     public function handle(Request $request, Closure $next, ...$role)
     {
 
-        if(!Auth::user()->hasRole($role)){
-            return redirect()->route('index');
+        foreach ($role as $value) {
+            if (Auth::user()->hasRole($value)){
+                return $next($request);
+            }
         }
 
-        return $next($request);
+        return redirect()->route('index');
+        
     }
 }
