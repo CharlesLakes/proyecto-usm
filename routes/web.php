@@ -28,8 +28,13 @@ Route::get("/register",[LoginController::class, "formRegister"])->name("register
 Route::post("/register",[LoginController::class, "processRegister"])->name("processRegister");
 
 
-// Asignaturas
-Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
 
-Route::post("/asignatura/inscripción", [AsignaturaController::class, "inscripcion"])->name("inscripcion");
+Route::group(['middleware' => ['auth:user']], function () {
+    // Asignaturas - Usuarios
+    Route::get("/asignatura/inscripcion", [AsignaturaController::class, "inscripcion"])->name("inscripcion");  
+    Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
+    Route::post("/asignatura/inscripcion", [AsignaturaController::class, "processInscripcion"])->name("processInscripcion");  
+    
+});
+
 

@@ -31,7 +31,11 @@ class LoginController extends Controller
         ]);
         /* Comprobando session */
         if(Auth::attempt($credentials)){
-            return redirect()->route('index');
+            if(count(Auth::user()->asignaturas) == 0){
+                return redirect()->route('inscripcion');
+            }
+            return redirect()->route('panel');
+            
         }
         return back()->withErrors(['msg' => 'Email o contraseña invalida']);
     }
