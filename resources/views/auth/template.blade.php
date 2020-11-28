@@ -31,5 +31,5 @@
       </div>
     </div>
   </body>
-  <script src="{{asset('js/login.js')}}"></script>
+  <script type="text/javascript" src="{{asset('js/login.js')}}"></script>
 </html>

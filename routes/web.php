@@ -31,6 +31,7 @@ Route::post("/register",[LoginController::class, "processRegister"])->name("proc
 
 Route::group(['middleware' => ['auth:user']], function () {
     // Asignaturas - Usuarios
+    Route::get("/asignatura/lista", [AsignaturaController::class, "obtenerAsignaturas"])->name("listaAsignaturas");
     Route::get("/asignatura/inscripcion", [AsignaturaController::class, "inscripcion"])->name("inscripcion");  
     Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
     Route::post("/asignatura/inscripcion", [AsignaturaController::class, "processInscripcion"])->name("processInscripcion");  

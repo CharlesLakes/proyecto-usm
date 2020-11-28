@@ -10,24 +10,34 @@ use App\Models\Asignatura;
 
 class AsignaturaController extends Controller
 {
-    public function asignatura(Request $request,$asignatura){
-        return json_encode(Auth::user()->asignaturas);
+    public function obtenerAsignaturas(){
+        $respuesta = Asignatura::all();
+        $lista = [];
+        foreach($respuesta as $item){
+            $lista[] = array(
+                'id' => $item['id'],
+                'sigla' => $item['sigla']
+            );
+        }
+        return $lista;
 
         
     }
     public function inscripcion(){
-        return "Hola mundo";
+        return view('page.inscAsignatura');
     }
     public function processInscripcion(Request $request){
-        $inputs = $request([
-            'listaAsignatura' => 'required|array'
-        ]);
-        
+        $inputs = $request->input('listaAsignatura');
+
+        if($inputs === NULL){
+            return "Error de petición";
+        };
+
         $inscritas = [];
 
-        foreach ($inputs['listaAsignatura'] as $value) {
+        foreach ($inputs as $value) {
             if(Asignatura::where('id',$value)->first() != NULL){
-                $inscritas[] = $value;
+                $inscritas[] = $value['id'];
             }
         }
         Auth::user()->truncate();
