@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::get("/asignatura/inscripcion", [AsignaturaController::class, "inscripcion"])->name("inscripcion");  
     Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
     Route::post("/asignatura/inscripcion", [AsignaturaController::class, "processInscripcion"])->name("processInscripcion");  
-    
+    Route::get("/panel", [PageController::class, "panel"])->name("panel");
 });
 
 
