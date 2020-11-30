@@ -25,13 +25,13 @@ class Authenticate extends Middleware
 
     public function handle(Request $request, Closure $next, ...$role)
     {
-
-        foreach ($role as $value) {
-            if (Auth::user()->hasRole($value)){
-                return $next($request);
+        if(Auth::check()){
+            foreach ($role as $value) {
+                if (Auth::user()->hasRole($value)){
+                    return $next($request);
+                }
             }
         }
-
         return redirect()->route('index');
         
     }

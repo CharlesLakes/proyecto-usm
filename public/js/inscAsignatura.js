@@ -93,7 +93,7 @@ $(document).ready(function () {
                 listaAsignatura: asignaturas_selecionadas,
             },
             success: function (resp) {
-                location.href = "/";
+                location.href = "/panel";
             },
             error: function () {
                 alert("Ocurrio un error");

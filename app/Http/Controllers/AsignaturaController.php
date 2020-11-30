@@ -40,7 +40,6 @@ class AsignaturaController extends Controller
                 $inscritas[] = $value['id'];
             }
         }
-        Auth::user()->truncate();
         Auth::user()->asignaturas()->attach($inscritas);
         
         return redirect()->route('panel');

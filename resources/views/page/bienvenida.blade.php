@@ -62,20 +62,7 @@
               <p>Desarrollador de frontend y backend</p>
             </div>
           </div>
-          <div class="card-dev">
-            <div class="container-img">
-              <a href="https://github.com/Jigsaw123ixas2" target="_blank"></a>
-              <img
-                src="https://avatars0.githubusercontent.com/u/74024981"
-                alt="Desarrollador"
-              />
-            </div>
-            <div class="texto">
-              <h3>Vicente Muños</h3>
 
-              <p>Desarrollador de backend</p>
-            </div>
-          </div>
           <div class="card-dev">
             <div class="container-img">
               <a href="https://github.com/VicariousMoth" target="_blank"></a>
@@ -90,6 +77,24 @@
               <p>Desarrollador de frontend y diseño web</p>
             </div>
           </div>
+
+          <div class="card-dev">
+            <div class="container-img">
+              <a href="https://github.com/Jigsaw123ixas2" target="_blank"></a>
+              <img
+                src="https://avatars0.githubusercontent.com/u/74024981"
+                alt="Desarrollador"
+              />
+            </div>
+            <div class="texto">
+              <h3>Vicente Muños</h3>
+
+              <p>Desarrollador de backend</p>
+            </div>
+          </div>
+
+          
+          
         </div>
       </div>
     </main>

@@ -12,6 +12,6 @@ class PageController extends Controller
     }
 
     public function panel(){
-        return "logeado";
+        return view('page.panel');
     }
 }

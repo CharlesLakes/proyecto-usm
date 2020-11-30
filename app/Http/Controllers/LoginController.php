@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class LoginController extends Controller
 {
     /* Comprobar si tiene session iniciada o no , si no manda a logeo o register */
     public function formLogin(){
         if(Auth::check()){
-            return redirect()->route('index');
+            return redirect()->route('panel');
         }
         return view("auth.login");
     }
@@ -64,6 +65,7 @@ class LoginController extends Controller
         /* Registrando */
         User::create([
             'role' => 'user',
+            'image_user' => 'image_user/default',
             'username' => $credentials['username'],
             'email' => strtolower($credentials['email']),
             'password' => $credentials['password'],
@@ -80,47 +82,52 @@ class LoginController extends Controller
         return redirect()->route('index');
     }
     
-    public function CambiarDatos(Request $request){
-        //Lo que te pediran, (Lesquite lo required a la new password y renewpassword para que no sea obligatorio ponerlos si quieres cambiar otra cosa)
-        $credentials = $request->validate([
-            'NewUsername' => 'alpha',
-            'Password' => 'required|string',
-            'NewPassword' => 'string|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
-            'ReNewPassword' => 'string',
-        ]);
-        //Verifica si la contraseña es correcta (la actual)
-        if (Hash::check( $request->password, Auth::user()->password)){
-            if ($credentials["NewPassword"]!="" and $credentials["NewUsername"]!=""){
-                if($credentials['NewPassword'] != $credentials['ReNewPassword']){
-                    return back()->withErrors(['msg' => 'La contraseñas nuevas ingresadas no coinciden.']);
-                }
-                if($credentials['Password'] == $credentials['NewPassword']){
-                    return back()->withErrors(['msg' => 'La contraseña actual y la nueva son identicas.']);
-                }
-                Auth::user()->update(['username'=>$credentials['NewUsername']]);
-                Auth::user()->update(['password'=>$credentials['NewPassword']]);
-                return "Username y contraseña cambiada con exito.";
-            }
-            elseif ($credentials["NewPassword"]=="" and $credentials["NewUsername"]!="") {
-                if(User::where('username',$credentials['username'])->first() != NULL){
-                    return back()->withErrors(['msg' => 'Ya existe un usuario con ese username.']);
-                }
-                Auth::user()->update(['username'=>$credentials['NewUsername']]);
-                return "Username cambiado con exito.";
-            }
-            else{
-                if($credentials['NewPassword'] != $credentials['ReNewPassword']){
-                    return back()->withErrors(['msg' => 'La contraseñas nuevas ingresadas no coinciden.']);
-                }
-                if($credentials['password'] == $credentials['NewPassword']){
-                    return back()->withErrors(['msg' => 'La contraseña actual y la nueva son identicas.']);
-                Auth::user()->update(['password'=>$credentials['NewPassword']]);
-                return "contraseña cambiada con exito.";
-                }
-            }
-        }
-        else {
-            return back()->withErrors(['msg' => 'La contraseña actual no corresponde.']);
-        }
+    public function changeData(){
+        return view('auth.changeData');
     }
+
+    public function processChangeData(Request $request){
+        //Lo que te pediran, (Lesquite lo required a la new password y renewpassword para que no sea obligatorio ponerlos si quieres cambiar otra cosa)
+        $credentials = $request->all();
+        //Verifica si la contraseña es correcta (la actual)
+        if (Hash::check( $credentials["password"], Auth::user()->password)){
+            $updates = [];
+            foreach($credentials as $key => $value){
+                if($value != NULL){
+                    switch ($key) {
+                        case 'newUsername':
+                            if(User::where('username',$value)->first() != NULL){
+                                return back()->withErrors(['msg' => 'Ya existe un usuario con ese username.']);
+                            }
+                            $updates['username'] = $value;
+                            break;
+                    
+                        case 'newPassword':
+                            if(preg_match("/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/",$value)){
+                                return back()->withErrors(['msg' => 'La contraseña nueva tiene un formato incorrecto.']);
+                            }
+                            if($value != $credentials['reNewPassword']){
+                                return back()->withErrors(['msg' => 'La contraseñas nuevas ingresadas no coinciden.']);
+                            }
+                            if($value != $credentials['password']){
+                                return back()->withErrors(['msg' => 'La contraseña actual y la nueva son identicas.']);
+                            }
+                            $updates['password'] = $value;
+                            break;
+                        case 'imageUser':
+                            Storage::put('image_user/'.Auth::user()->id, $value);
+                            $updates['image_user'] = 'image_user/'.Auth::user()->id;
+                            break;
+                    }
+                }
+            }
+        }else{
+            return back()->withErrors(['msg' => 'La contraseña no es la correcta.']);
+        }
+        Auth::user()->update($updates);
+        return redirect()->route('panel');
+        
+    }
+
+
 }

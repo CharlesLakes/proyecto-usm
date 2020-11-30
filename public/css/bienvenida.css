@@ -192,7 +192,7 @@ header.active .btn:hover {
     -webkit-transition: ease all 0.3s;
 }
 .card-dev .container-img:hover img {
-    width: 110%;
+    width: 110% !important;
 }
 .card-dev .texto {
     display: flex;

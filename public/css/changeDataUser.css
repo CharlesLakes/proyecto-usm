@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100vw;
+
+    background: #007af9;
+}
+
+#app {
+    background: white;
+    min-height: 400px;
+    padding: 20px;
+    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.image-user {
+    height: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    position: relative;
+}
+.image-user img {
+    height: 100%;
+}
+.container-input {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-input input {
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+#image-user-upload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.crop-image {
+    position: fixed;
+    width: 30%;
+    border-radius: 10px 10px 0px 0px;
+    height: auto;
+    bottom: -200%;
+    background: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    padding: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    transition: ease all 0.3s;
+    -o-transition: ease all 0.3s;
+    -moz-transition: ease all 0.3s;
+    -webkit-transition: ease all 0.3s;
+}
+
+.crop-image.active {
+    bottom: 0;
+}
+.preview {
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    border-radius: 100%;
+}
+
+#image-edit {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .crop-image {
+        width: 90%;
+        height: auto;
+    }
+}
