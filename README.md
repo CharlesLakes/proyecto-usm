@@ -65,6 +65,7 @@ Se trabajara vía pull request para tener un mayor control de los cambios en la 
 Creación de el repositorio-blog y creación de el proyecto en laravel - 31/10/2020
 Creación de login/register  - 13/11/2020
 Reunión de organización para las dos semanas antes de el adelanto - 17/11/2020
+Termino de el avance - 20/11/2020
 ```
 
 ## Metas semanales
