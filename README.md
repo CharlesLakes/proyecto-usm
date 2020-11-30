@@ -1,4 +1,4 @@
-# Proyecto IWG (nombre por definir)
+# PEPFI: Plataforma de Estudio Para Futuros Ingenieros
 
 ## Información general
 
