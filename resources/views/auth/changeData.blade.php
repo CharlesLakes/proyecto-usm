@@ -57,7 +57,12 @@
       </h1>
       <div class="image-user">
         <input type="file" id="image-user-upload" />
-        <img src="{{Storage::get(Auth::user()->image_user)}}" id="image-user" />
+        @if(Auth::user()->image_user != '')
+            <img src="{{Storage::get(Auth::user()->image_user)}}" id="image-user" />
+        @else
+          <img src="https://www.softzone.es/app/uploads/2018/04/guest.png" id="image-user" />
+        @endif
+        
       </div>
       <div class="container-input">
         <form action="" method="POST">

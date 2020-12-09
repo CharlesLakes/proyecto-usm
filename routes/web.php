@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AsignaturaController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\VideoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +40,12 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::get("/panel", [PageController::class, "panel"])->name("panel");
     Route::get("/editar-perfil",[LoginController::class, "changeData"])->name("cambiarDatosUser");
     Route::post("/editar-perfil",[LoginController::class, "processChangeData"]);
+    //Route::post("/video/create",[VideoController::class, "crear"]);
+
+    Route::get("/quiz/{id}",[QuizController::class,"quizView"])->where(['id' => '[0-9]+']);
+    Route::post("/quiz/{id}",[QuizController::class,"recibirRespuestas"])->where(['id' => '[0-9]+']);
+    Route::get("/quiz/create",[QuizController::class,"crearView"])->name('creatorQuiz');
+    Route::post("/quiz/create",[QuizController::class,"crear"]);
 });
 
 

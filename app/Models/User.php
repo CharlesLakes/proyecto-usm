@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Asignatura;
+use App\Models\Quiz;
 
 class User extends Authenticatable
 {
@@ -47,21 +48,25 @@ class User extends Authenticatable
     ];
     */
 
-
+    // Encrypta la password
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
     }
 
+    // Detecta si exite el rol
     public function hasRole($role)
     {
         return $role == $this->role;
     }
 
+    // Relacion con las asignaturas inscritas
     public function asignaturas(){
         return $this->belongsToMany(Asignatura::class);
     }
+
+    // Relacion con los quiz hechos
     public function quiz(){
-        return $this->hasMany(Quiz::class);
+        return $this->belongstoMany(Quiz::class);
     }
 }

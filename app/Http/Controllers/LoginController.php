@@ -65,7 +65,7 @@ class LoginController extends Controller
         /* Registrando */
         User::create([
             'role' => 'user',
-            'image_user' => 'image_user/default',
+            'image_user' => '',
             'username' => $credentials['username'],
             'email' => strtolower($credentials['email']),
             'password' => $credentials['password'],

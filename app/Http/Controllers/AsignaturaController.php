@@ -27,6 +27,7 @@ class AsignaturaController extends Controller
         return view('page.inscAsignatura');
     }
     public function processInscripcion(Request $request){
+
         $inputs = $request->input('listaAsignatura');
 
         if($inputs === NULL){

@@ -33,12 +33,20 @@
       </ul>
       <div class="usuario">
         <div class="icono-usuario">
+          @if (Auth::user()->image_user != '')
           <img
             src="{{Storage::get(Auth::user()->image_user)}}"
             alt="Imagen de usuario"
           />
+          @else
+          <img
+          src="https://www.softzone.es/app/uploads/2018/04/guest.png"
+          alt="Imagen de usuario"
+        />
+          @endif
+          
         </div>
-        <span class="nombre-usuario">charleslakes</span>
+        <span class="nombre-usuario">{{Auth::user()->username}}</span>
         <div class="menu-desplegable">
             <ul>
                 <a href="{{route('cambiarDatosUser')}}">
