@@ -15,7 +15,7 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger("asginatura_id");
+            $table->unsignedInteger("asignatura_id");
             $table->unsignedInteger("user_id");
             $table->string("title");
             $table->text("description");

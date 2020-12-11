@@ -18,6 +18,7 @@ class CreateAsignaturasTable extends Migration
             $table->string("sigla");
             $table->string("nombre");
             $table->string("description");
+            $table->string("image_url");
             $table->timestamps();
         });
     }

@@ -111,7 +111,7 @@ body {
 }
 .navegacion .usuario:hover .menu-desplegable {
     height: 100px;
-    box-shadow: 0px 7.5px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2.5px 5px 0px rgba(0, 0, 0, 0.5);
 }
 .menu-desplegable ul {
     padding: 0;
@@ -142,6 +142,8 @@ body {
 main {
     padding: 80px 10%;
 }
+
+/* Estilos inicio */
 .stats {
     padding: 10px 0px;
 }
@@ -228,4 +230,115 @@ main {
 }
 .card img {
     width: 100%;
+}
+
+/*  Estilos Quiz  */
+
+.container-horizontal-cards {
+    padding: 10px;
+    box-sizing: border-box;
+}
+.container-horizontal-cards h2 {
+    color: #007af9;
+    border-bottom: solid 1px #007af9;
+    cursor: pointer;
+}
+.horizontal-cards {
+    width: 100%;
+    display: flex;
+    border: 1px;
+    text-align: center;
+    box-sizing: border-box;
+
+    transition: ease all 0.3s;
+    -o-transition: ease all 0.3s;
+    -moz-transition: ease all 0.3s;
+    -webkit-transition: ease all 0.3s;
+
+    cursor: pointer;
+
+    margin-bottom: 50px;
+}
+.horizontal-cards:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.horizontal-cards p {
+    font-size: 18px;
+}
+.horizontal-cards h1 {
+    color: #007af9;
+}
+.horizontal-cards .container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    overflow: hidden;
+
+    background: black;
+}
+.horizontal-cards img {
+    width: 100%;
+}
+.horizontal-cards .texto {
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 50%;
+    color: #007af9;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.horizontal-cards h5 {
+    font-size: 18px;
+}
+.horizontal-cards .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.horizontal-cards .icon img {
+    width: 100%;
+}
+
+.horizontal-cards .container-user {
+    display: flex;
+    align-items: center;
+}
+
+.add-quiz-or-video {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.add-quiz-or-video button {
+    width: 100%;
+    padding: 2.5px;
+    font-size: 50px;
+    border: none;
+    border: solid 1px #007af9;
+    background: white;
+    color: #007af9;
+
+    transition: ease all 0.3s;
+    -o-transition: ease all 0.3s;
+    -moz-transition: ease all 0.3s;
+    -webkit-transition: ease all 0.3s;
+
+    cursor: pointer;
+    outline: none;
+}
+.add-quiz-or-video button:hover {
+    background: #007af9;
+    color: white;
+    box-shadow: 0px 0px 10px 0px #007af9;
 }

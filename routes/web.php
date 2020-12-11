@@ -38,6 +38,9 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
     Route::post("/asignatura/inscripcion", [AsignaturaController::class, "processInscripcion"])->name("processInscripcion");  
     Route::get("/panel", [PageController::class, "panel"])->name("panel");
+    Route::get("/panel/quiz",[PageController::class, "panelQuiz"])->name("panelQuiz");
+    Route::get("/panel/video",[PageController::class, "panelVideo"])->name("panelVideo");
+
     Route::get("/editar-perfil",[LoginController::class, "changeData"])->name("cambiarDatosUser");
     Route::post("/editar-perfil",[LoginController::class, "processChangeData"]);
     //Route::post("/video/create",[VideoController::class, "crear"]);

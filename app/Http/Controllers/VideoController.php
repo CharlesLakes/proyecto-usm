@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Video;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Asignatura;
 
 class VideoController extends Controller
 {
@@ -17,7 +18,14 @@ class VideoController extends Controller
             'asignatura_id' => 'required|integer'
         ]);
         
-        return $respuesta;
+        if(!preg_match('/http(?:s?):\\/\\/(?:www\\.)?youtu(?:be\\.com\\/watch\\?v=|\\.be\\/)([\\w\\-\\_]*)(&(amp;)?\u200c\u200b[\\w\\?\u200c\u200b=]*)?/',$respuesta["link"])){
+            return "El link ingresado no es de youtube";
+        }
+
+        if(Asignatura::where('id',$respuesta['asignatura_id'])->first() == NULL){
+            return "La asignatura no existe";
+        }
+
         $video = new Video();
         $video->title = $respuesta['title'];
         $video->description = $respuesta['description'];
@@ -27,5 +35,8 @@ class VideoController extends Controller
         $video->save();
 
         return "creado";
+    }
+    public function viewVideo($id){
+        return $id;
     }
 }

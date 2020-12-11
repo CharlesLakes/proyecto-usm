@@ -32,6 +32,6 @@ class Quiz extends Model
 
     // Relacion con los usuarios que hicieron el quiz
     public function user(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

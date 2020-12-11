@@ -33,7 +33,7 @@ class LoginController extends Controller
         ]);
         /* Comprobando session */
         if(Auth::attempt($credentials)){
-            if(count(Auth::user()->asignaturas) == 0){
+            if(count(Auth::user()->asignaturas) < 1){
                 return redirect()->route('inscripcion');
             }
             return redirect()->route('panel');
