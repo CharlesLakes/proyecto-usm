@@ -49,6 +49,9 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::post("/quiz/{id}",[QuizController::class,"recibirRespuestas"])->where(['id' => '[0-9]+']);
     Route::get("/quiz/create",[QuizController::class,"crearView"])->name('creatorQuiz');
     Route::post("/quiz/create",[QuizController::class,"crear"]);
+
+    Route::get("/video/create",[VideoController::class, "crearView"])->name("creatorVideo");
+    Route::post("/video/create",[VideoController::class, "crear"]);
 });
 
 

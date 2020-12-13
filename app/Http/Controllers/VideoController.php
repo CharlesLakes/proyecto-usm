@@ -19,11 +19,11 @@ class VideoController extends Controller
         ]);
         
         if(!preg_match('/http(?:s?):\\/\\/(?:www\\.)?youtu(?:be\\.com\\/watch\\?v=|\\.be\\/)([\\w\\-\\_]*)(&(amp;)?\u200c\u200b[\\w\\?\u200c\u200b=]*)?/',$respuesta["link"])){
-            return "El link ingresado no es de youtube";
+            return back()->withErrors(['msg' => 'El link ingresado no es de youtube.']);
         }
 
         if(Asignatura::where('id',$respuesta['asignatura_id'])->first() == NULL){
-            return "La asignatura no existe";
+            return back()->withErrors(['msg' => 'No existe la asignatura ingresada.']);
         }
 
         $video = new Video();
@@ -34,9 +34,9 @@ class VideoController extends Controller
         $video->asignatura_id = $respuesta['asignatura_id'];
         $video->save();
 
-        return "creado";
+        return redirect()->route('panelVideo');
     }
-    public function viewVideo($id){
-        return $id;
+    public function crearView(){
+        return view('page.creatorVideo');
     }
 }

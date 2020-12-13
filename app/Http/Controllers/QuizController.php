@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Asignatura;
 use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
@@ -24,6 +25,10 @@ class QuizController extends Controller
             'questions.*.correcta' => 'required|integer'
         ]);
 
+        if(Asignatura::where('id',$respuesta['asignatura_id'])->first() == NULL){
+            return back()->withErrors(['msg' => 'La asignatura ingresada no existe.']);
+        }
+
        Quiz::create([
            'title' => $respuesta['title'],
            'description' => $respuesta['description'],
@@ -32,7 +37,7 @@ class QuizController extends Controller
            'questions' => json_encode($respuesta['questions'])
        ]);
 
-       return "ok";
+       return redirect()->route('panelQuiz');
     }
 
     public function recibirRespuestas(Request $request,$id_quiz){

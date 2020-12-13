@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crear Quiz</title>
+    <title>Subir video</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -34,45 +34,32 @@
   </head>
   <body>
     <div class="container">
-      <h1>Creador de Quiz</h1>
-      {!!$errors->first('title','<span style="display:block;" class="alert alert-danger">:message</span>') !!}
-      {!!$errors->first('description','<span style="display:block;" class="alert alert-danger">:message</span>') !!}
-      {!!$errors->first('questions.*.contenido','<span style="display:block;" class="alert alert-danger">:message</span>') !!}
-      {!!$errors->first('questions.*.respuestas','<span style="display:block;" class="alert alert-danger">:message</span>') !!}
-      {!!$errors->first('questions.*.correcta','<span style="display:block;" class="alert alert-danger">:message</span>') !!}
-      {!!$errors->first('msg','<span class="alert">:message</span>') !!}
-      
-
-      <form method="post" action="{{route('creatorQuiz')}}">
+      <h1>Creador de Videos</h1>
+      <form action="{{ route('creatorVideo') }}" method="post">
         @csrf
         <input
           type="text"
-          placeholder="Titulo de el Quiz"
-          class="form form-control mb-2"
           name="title"
+          class="form form-control mb-2"
+          placeholder="Ingresa el titulo"
         />
         <textarea
           name="description"
-          placeholder="Descripción de Quiz"
           class="form form-control mb-2"
+          placeholder="Ingresa la descipción"
         ></textarea>
-        <select name="asignatura_id" class="form form-control">
-          @foreach (Auth::user()->asignaturas as $asignatura)
-            <option value="{{$asignatura->id}}">{{$asignatura->sigla}}</option>
-          @endforeach
+        <input
+          type="url"
+          name="link"
+          class="form form-control mb-2"
+          placeholder="Ingresa el link de youtube"
+          class="mb-2"
+        />
+        <select name="asignatura_id" class="form form-control mb-2">
+          <option value="1">MAT021</option>
         </select>
-        <div id="contenedor-preguntas">
-
-        </div>
-
-        <button class="btn btn-primary" type="button" id="agregar-pregunta">
-          Agregar pregunta
-        </button>
-        <button class="btn btn-outline-primary" type="submit">
-          Publicar quiz
-        </button>
+        <button class="btn btn-primary">Publicar video</button>
       </form>
     </div>
-    <script src="{{asset('js/creatorQuiz.js')}}"></script>
   </body>
 </html>

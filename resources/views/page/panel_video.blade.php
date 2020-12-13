@@ -1,7 +1,7 @@
 @extends('page.panel')
 
 @section('main')
-<a href="" class="add-quiz-or-video">
+<a href="{{ route('creatorVideo') }}" class="add-quiz-or-video">
     <button>+</button>
   </a>
 
@@ -30,7 +30,7 @@
                     <div class="icon">
                         @if ($video->user->image_user != '')
                         <img
-                          src="{{Storage::get(Auth::user()->image_user)}}"
+                          src="{{Storage::get($video->user->image_user)}}"
                           alt="Imagen de usuario"
                         />
                         @else 

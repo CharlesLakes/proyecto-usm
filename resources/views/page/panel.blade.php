@@ -24,6 +24,9 @@
         <a href="{{route("panel")}}">
           <li>Inicio</li>
         </a>
+        <a href="">
+          <li>Foro</li>
+        </a>
         <a href="{{route("panelVideo")}}">
           <li>Videos</li>
         </a>
