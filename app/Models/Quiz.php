@@ -25,10 +25,6 @@ class Quiz extends Model
         return $this->belongsTo(Asignatura::class);
     }
     
-    // Relacion con el usuario creador de el quiz
-    public function creador(){
-        return $this->belongsTo(User::class);
-    }
 
     // Relacion con los usuarios que hicieron el quiz
     public function user(){

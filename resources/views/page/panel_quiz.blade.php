@@ -1,18 +1,18 @@
 @extends('page.panel')
 
 @section('main')
-<a href="{{route('creatorQuiz')}}" class="add-quiz-or-video">
-    <button>+</button>
-  </a>
+<a href="{{ route('creatorQuiz') }}" class="add-quiz-or-video">
+  <button>+</button>
+</a>
 
   <div class="container-horizontal-cards">
-    @foreach ($asignaturas as $key => $item)
-          @if (count($item) > 0)
-          <h2>{{$key}}</h2>
+    @foreach ($asignaturas as $item)
+          @if (count($item->quiz) > 0)
+          <h2>{{$item->sigla}}</h2>
           @endif
 
-          @foreach ($item as $quiz)
-          <a style="text-decoration:none;" target="_blank" href="/quiz/{{$quiz->id}}">
+          @foreach ($item->quiz as $quiz)
+          <a style="text-decoration:none;" target="_blank" href="{{route('quizId',["id" => $quiz->id])}}">
             <div class="horizontal-cards">
                 <div class="container-img">
                   <img

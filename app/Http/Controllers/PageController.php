@@ -15,25 +15,25 @@ class PageController extends Controller
     }
 
     public function panel(){
+        $avance = 1;
+
+        return Auth::user()->asignatura[0]->quiz;
         return view('page.panel_inicio');
     }
 
     public function panelQuiz(){
-        $asignaturas = [];
-        foreach(Auth::user()->asignaturas as $item){
-            
-            $asignaturas[$item->sigla] = Quiz::where('asignatura_id',$item->id)->get();
-        }
-
+        $asignaturas = Auth::user()->asignaturas;
         return view('page.panel_quiz',compact("asignaturas"));
     }
 
     public function panelVideo(){
-        $asignaturas = [];
-        foreach(Auth::user()->asignaturas as $item){
-            $asignaturas[$item->sigla] = Video::where('asignatura_id',$item->id)->get();
-        }
-
+        $asignaturas = Auth::user()->asignaturas;
         return view('page.panel_video',compact("asignaturas"));
+    }
+
+    public function panelForo(){
+
+        $asignaturas =  Asignatura::get();
+        return view('page.panel_foro',compact("asignaturas"));
     }
 }

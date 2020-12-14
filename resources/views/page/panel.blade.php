@@ -17,6 +17,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{{asset("css/panel.css")}}" />
+    @yield('head')
   </head>
   <body>
     <nav class="navegacion">
@@ -24,7 +25,7 @@
         <a href="{{route("panel")}}">
           <li>Inicio</li>
         </a>
-        <a href="">
+        <a href="{{route("panelForo")}}">
           <li>Foro</li>
         </a>
         <a href="{{route("panelVideo")}}">

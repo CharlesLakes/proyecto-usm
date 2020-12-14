@@ -108,10 +108,7 @@ $(document).ready(function () {
     eventosRespuestas();
 
     $("#btn-siguiente").click(function () {
-        if (
-            (numeroPregunta == numeroPregunta) ==
-            Object.keys(preguntas).length
-        ) {
+        if (numeroPregunta == Object.keys(preguntas).length) {
             terminarIntento();
             return;
         }

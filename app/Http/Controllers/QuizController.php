@@ -25,7 +25,7 @@ class QuizController extends Controller
             'questions.*.correcta' => 'required|integer'
         ]);
 
-        if(Asignatura::where('id',$respuesta['asignatura_id'])->first() == NULL){
+        if(Asignatura::find($respuesta['asignatura_id']) == NULL){
             return back()->withErrors(['msg' => 'La asignatura ingresada no existe.']);
         }
 
@@ -46,7 +46,12 @@ class QuizController extends Controller
             'respuestas.*.value' => 'required|integer'
         ]);
         
-        $quiz = Quiz::find($id_quiz)->questions;
+        $quiz =  Quiz::find($id_quiz);
+        if($quiz == NULL){
+            return "Quiz no existe";
+        }
+
+        $quiz = $quiz->questions;
         $puntos = 0;
         $totales = 0;
         foreach(json_decode($quiz,1) as $key => $value){

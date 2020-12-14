@@ -6,12 +6,12 @@
   </a>
 
   <div class="container-horizontal-cards">
-      @foreach ($asignaturas as $key => $item)
-            @if (count($item) > 0)
-            <h2>{{$key}}</h2>
+      @foreach ($asignaturas as $item)
+            @if (count($item->video) > 0)
+            <h2>{{$item->sigla}}</h2>
             @endif    
 
-          @foreach ($item as $video)
+          @foreach ($item->video as $video)
           <a style="text-decoration:none;" target="_blank" href="{{$video->link}}">
             <div class="horizontal-cards">
                 <div class="container-img">

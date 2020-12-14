@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Asignatura;
 use App\Models\Quiz;
+use App\Models\Post;
 
 class User extends Authenticatable
 {
@@ -65,8 +66,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Asignatura::class);
     }
 
-    // Relacion con los quiz hechos
+    // Relacion con los quiz relizados
     public function quiz(){
         return $this->belongstoMany(Quiz::class);
+    }
+
+    public function post(){
+        return $this->hasMany(Post::class);
     }
 }

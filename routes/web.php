@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\ForoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,21 +38,32 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::get("/asignatura/inscripcion", [AsignaturaController::class, "inscripcion"])->name("inscripcion");  
     Route::get("/asignatura/{asignatura}", [AsignaturaController::class, "asignatura"])->name("asignatura");
     Route::post("/asignatura/inscripcion", [AsignaturaController::class, "processInscripcion"])->name("processInscripcion");  
+    
     Route::get("/panel", [PageController::class, "panel"])->name("panel");
     Route::get("/panel/quiz",[PageController::class, "panelQuiz"])->name("panelQuiz");
     Route::get("/panel/video",[PageController::class, "panelVideo"])->name("panelVideo");
+    Route::get("/panel/foro",[PageController::class,"panelForo"])->name("panelForo");
 
     Route::get("/editar-perfil",[LoginController::class, "changeData"])->name("cambiarDatosUser");
     Route::post("/editar-perfil",[LoginController::class, "processChangeData"]);
     //Route::post("/video/create",[VideoController::class, "crear"]);
 
-    Route::get("/quiz/{id}",[QuizController::class,"quizView"])->where(['id' => '[0-9]+']);
+    Route::get("/quiz/{id}",[QuizController::class,"quizView"])->where(['id' => '[0-9]+'])->name("quizId");
     Route::post("/quiz/{id}",[QuizController::class,"recibirRespuestas"])->where(['id' => '[0-9]+']);
     Route::get("/quiz/create",[QuizController::class,"crearView"])->name('creatorQuiz');
     Route::post("/quiz/create",[QuizController::class,"crear"]);
 
     Route::get("/video/create",[VideoController::class, "crearView"])->name("creatorVideo");
     Route::post("/video/create",[VideoController::class, "crear"]);
+
+    Route::get("/foro/post/create",[ForoController::class, "crearView"])->name("creatorPost");
+    Route::post("/foro/post/create",[ForoController::class, "CrearPregunta"]);
+
+
+    Route::get("/foro/tema/{id}",[ForoController::class, "tema"])->name("foroTema");
+    Route::get("/foro/post/{id}",[ForoController::class, "ReadPregunta"])->where(['id' => '[0-9]+'])->name("foroPost");
+    Route::post("/foro/post/{id}",[ForoController::class, "commentPregunta"])->where(['id' => '[0-9]+']);
+    
 });
 
 
