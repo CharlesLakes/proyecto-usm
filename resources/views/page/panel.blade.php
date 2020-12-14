@@ -53,10 +53,10 @@
         <span class="nombre-usuario">{{Auth::user()->username}}</span>
         <div class="menu-desplegable">
             <ul>
-                <a href="{{route('cambiarDatosUser')}}">
+                <a style="text-decoration:none;" href="{{route('cambiarDatosUser')}}">
                     <li>Editar perfil</li>
                 </a>
-                <a href="{{route('logout')}}">
+                <a style="text-decoration:none;" href="{{route('logout')}}">
                     <li>Cerrar sesión</li>
                 </a>
             </ul>

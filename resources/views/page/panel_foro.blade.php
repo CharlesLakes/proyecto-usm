@@ -40,7 +40,7 @@
       @foreach ($asignaturas as $item)
       <tr>
         <td>{{$item->nombre}}</td>
-        <td><a  target="_blank" href="{{route('foroTema',["id" => $item->id])}}">Ir</a></td>
+        <td><a  target="_blank" href="{{route('foroTema',["id" => $item->id])}}"><button class="btn btn-primary">Ir</button></a></td>
       </tr>
       @endforeach
       

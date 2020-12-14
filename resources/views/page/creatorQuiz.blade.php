@@ -4,8 +4,11 @@
     Creador de quiz
 @endsection
 
+@section('pre-main')
+<h1 class="container">Creador de Quiz</h1>
+@endsection
+
 @section('main')
-<h1>Creador de Quiz</h1>
 {!!$errors->first('title','<span style="display:block;" class="alert alert-danger">:message</span>') !!}
 {!!$errors->first('description','<span style="display:block;" class="alert alert-danger">:message</span>') !!}
 {!!$errors->first('questions.*.contenido','<span style="display:block;" class="alert alert-danger">:message</span>') !!}

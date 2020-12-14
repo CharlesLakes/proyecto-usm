@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Video;
+use App\Models\User;
 use App\Models\Quiz;
 use App\Models\Asignatura;
 
@@ -15,10 +16,39 @@ class PageController extends Controller
     }
 
     public function panel(){
-        $avance = 1;
+        $total = 20;
+        $data = [];
 
-        return Auth::user()->asignatura[0]->quiz;
-        return view('page.panel_inicio');
+        $fecha = new \DateTime("now");
+      
+        foreach(Auth::user()->quiz as $item){
+            $temp_fecha = new \DateTime($item->pivot->get()[0]->created_at);
+            if($temp_fecha->format("y-m") == $fecha->format("y-m")){
+                if(!array_key_exists($item->asignatura->sigla,$data)){
+                    $data[$item->asignatura->sigla] = 0;
+                }
+                if($data[$item->asignatura->sigla] <= $total){
+                    $data[$item->asignatura->sigla] += 1;
+                }
+            };      
+        }
+        
+        $asignaturas = Auth::user()->asignaturas;
+
+        $leaderboard = [];
+
+        foreach(User::get() as $user){
+            $leaderboard[] = [
+                'obj' => $user,
+                'puntaje' =>count($user->quiz)
+            ];
+        }
+
+        $leaderboard =  collect($leaderboard)->sortBy('puntaje')->reverse()->toArray();
+        $leaderboard = \array_slice($leaderboard,0,5,FALSE);
+
+
+        return view('page.panel_inicio',compact("data","total","asignaturas","leaderboard"));
     }
 
     public function panelQuiz(){
