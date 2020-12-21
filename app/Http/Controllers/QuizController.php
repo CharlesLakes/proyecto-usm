@@ -11,7 +11,7 @@ class QuizController extends Controller
 {
 
     public function crearView(){
-        return view('page.creatorQuiz');
+        return view('quiz.creatorQuiz');
     }
 
     public function crear(Request $request){
@@ -81,6 +81,6 @@ class QuizController extends Controller
                 'respuestas' => $value->respuestas
             ];
         };
-        return view('page.quiz',compact("json_quiz","id"));
+        return view('quiz.reproductQuiz',compact("json_quiz","id"));
     }
 }

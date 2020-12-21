@@ -26,7 +26,7 @@ class AsignaturaController extends Controller
     
     /* La pagina de inscripcion a la asignatura */
     public function inscripcion(){
-        return view('page.inscAsignatura');
+        return view('auth.inscAsignatura');
     }
 
     /* Procesa la inscripcion de las asignatuas */

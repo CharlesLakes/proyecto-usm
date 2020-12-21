@@ -1,4 +1,4 @@
-@extends('page.panel')
+@extends('panel.template')
 
 @section('main')
 <div class="stats">

@@ -38,7 +38,7 @@ class PageController extends Controller
         
         $asignaturas = Auth::user()->asignaturas; // Todas las asignaturas inscritas
 
-        $leaderboard = []; // la tavla de los puntajes
+        $leaderboard = []; // la tabla de los puntajes
 
         // Se cuentan los quiz hechos por el usuario en total
         foreach(User::get() as $user){
@@ -51,32 +51,35 @@ class PageController extends Controller
         // Se obtiuenen los mejores 5 puntajes 
         $leaderboard =  collect($leaderboard)->sortBy('puntaje')->reverse()->slice(0,5);
 
-        $videos = collect([]);
+        // Se guarda los videos recomendados
+        $videos = collect();
         
         foreach($asignaturas as $asignatura){
             $videos = $videos->merge(
                 $asignatura->video
             );
         }
-        $videos = $videos->sortByDesc('created_at');
-        $videos = $videos->slice(0,5);
+        /* Se toman los 5 videos mas recientes */
+        $videos = $videos->sortByDesc('created_at')->slice(0,5);
 
-        return view('page.panel_inicio',compact("data","total","videos","asignaturas","leaderboard"));
+        return view('page.inicio',compact("data","total","videos","asignaturas","leaderboard"));
     }
 
+    /* se llama a la vista que tendra todos los quiz segun asignatura */
     public function panelQuiz(){
         $asignaturas = Auth::user()->asignaturas;
-        return view('page.panel_quiz',compact("asignaturas"));
+        return view('panel.quiz',compact("asignaturas"));
     }
 
+    /* Se llama a la vista que tengra todos los videos segun asignatura */
     public function panelVideo(){
         $asignaturas = Auth::user()->asignaturas;
-        return view('page.panel_video',compact("asignaturas"));
+        return view('panel.video',compact("asignaturas"));
     }
 
+    /* Se lalama a la vista de el foro que se divide segun asignaturas */
     public function panelForo(){
-
-        $asignaturas =  Asignatura::get();
-        return view('page.panel_foro',compact("asignaturas"));
+        $asignaturas =  Auth::user()->asignaturas;
+        return view('panel.foro',compact("asignaturas"));
     }
 }
