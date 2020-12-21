@@ -45,20 +45,18 @@
     </div>
   </div>
   <div class="contianer-videos-recomendados">
-      <h2>Videos Recomendados</h2>
+      <h2>Videos Recientes</h2>
       <div class="continaer-video">
-        @foreach ($asignaturas as $item)
+        @foreach ($videos as $video)
         
-          @foreach ($item->video as $video)
           {{ parse_str(parse_url($video->link)["query"],$output) }}
-          <a target="_blank" style="text-decoration: none;" href="{{$video->link}}">
+          <a target="_blank" style="text-decoration: none;" href="{{$video["link"]}}">
             <div class="card">
-              <img src="https://i.ytimg.com/vi/{{$output["v"]}}/hq720.jpg">
+              <img src="https://i.ytimg.com/vi/{{ $output["v"] }}/hq720.jpg">
               <p>{{$video->title}}</p>
               <p>Por: {{$video->user->username}}</p>
             </div>
           </a>
-          @endforeach
         @endforeach
 
       </div>

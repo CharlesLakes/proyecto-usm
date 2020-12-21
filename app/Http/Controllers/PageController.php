@@ -33,7 +33,6 @@ class PageController extends Controller
             };      
         }
         
-        $asignaturas = Auth::user()->asignaturas;
 
         $leaderboard = [];
 
@@ -48,7 +47,18 @@ class PageController extends Controller
         $leaderboard = \array_slice($leaderboard,0,5,FALSE);
 
 
-        return view('page.panel_inicio',compact("data","total","asignaturas","leaderboard"));
+        $asignaturas = Auth::user()->asignaturas;
+        $videos = collect([]);
+        
+        foreach($asignaturas as $asignatura){
+            $videos = $videos->merge(
+                $asignatura->video
+            );
+        }
+        $videos = $videos->sortByDesc('created_at');
+        $videos = $videos->slice(0,5);
+
+        return view('page.panel_inicio',compact("data","total","videos","asignaturas","leaderboard"));
     }
 
     public function panelQuiz(){
