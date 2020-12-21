@@ -10,7 +10,7 @@
         <b>Asunto:</b> {{$pregunta->asunto}}
     </div>
     <div class="card-body d-flex flex-column">
-        <div class="mb-1">
+        <div class="mb-1 content-post">
             {!!
                $pregunta->contenido    
             !!}

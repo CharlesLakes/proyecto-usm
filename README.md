@@ -6,6 +6,18 @@
 
 La intención de este proyecto es ayudar al estudio de los alumnos de la USM creando un espacio colaborativo donde se podrán hacer cuestionarios o videos hechos por alumnos.
 
+### Funcionalidades
+
+-   Sistema de cuenta con login, register y cambios de perfil (Imagen de usuario, Nombre y contraseña).
+-   Creación y realización de quiz
+-   Agregar videos de youtube
+-   Foro según asignatura para responder dudas o etc...
+
+### Futuras funcionalidades
+
+-   Sistema de roles (Moderadores y Admin)
+-   Chat con websocket
+
 ### Integrantes
 
 -   Carlos Lagos (P201)

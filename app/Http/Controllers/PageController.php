@@ -48,12 +48,20 @@ class PageController extends Controller
             ];
         }
 
-        // 
-        $leaderboard =  collect($leaderboard)->sortBy('puntaje')->reverse()->toArray();
-        $leaderboard = \array_slice($leaderboard,0,5,FALSE);
+        // Se obtiuenen los mejores 5 puntajes 
+        $leaderboard =  collect($leaderboard)->sortBy('puntaje')->reverse()->slice(0,5);
 
+        $videos = collect([]);
+        
+        foreach($asignaturas as $asignatura){
+            $videos = $videos->merge(
+                $asignatura->video
+            );
+        }
+        $videos = $videos->sortByDesc('created_at');
+        $videos = $videos->slice(0,5);
 
-        return view('page.panel_inicio',compact("data","total","asignaturas","leaderboard"));
+        return view('page.panel_inicio',compact("data","total","videos","asignaturas","leaderboard"));
     }
 
     public function panelQuiz(){

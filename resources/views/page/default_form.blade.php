@@ -65,6 +65,9 @@
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
       }
      
+      .content-post img{
+        max-width:100%;
+      }
     </style>
   </head>
   <body class="p-2">
