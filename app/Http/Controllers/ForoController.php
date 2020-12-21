@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ForoController extends Controller
 {
+    /* Resive los datos de el creador de post para crear uno */
     public function CrearPregunta(Request $request){
         $pregunta = $request ->validate([
             'asunto' => 'required|string',
@@ -33,6 +34,7 @@ class ForoController extends Controller
         return redirect()->route("foroTema",['id' => $pregunta['asignatura_id']]);
     }
 
+    /* Actualiza los datos de la el post o pregunta que puedas segun el permiso */
     public function UpdatePregunta(Request $request,$id){
         $pregunta = $request->validate([
             'asunto' => 'string',
@@ -54,6 +56,8 @@ class ForoController extends Controller
         $preguntaUpdate->save();
         return 'nota editada!';
     }
+
+    /* Elimina las preguntas que puedes eliminar segun el permiso*/
     public function DeletePregunta($id){
         $preguntaEliminar = Preguntas::findOrFail($id);
 
@@ -64,6 +68,8 @@ class ForoController extends Controller
         $preguntaEliminar->delete();
         return 'Pregunta eliminada';
     }
+    /* Se obtienen los datos de el post o pregunta de la base de datos
+        y se muestra en la vista */
     public function ReadPregunta($id){
         $pregunta = Post::find($id);
         if($pregunta == NULL){
@@ -72,6 +78,7 @@ class ForoController extends Controller
         return view('foro.post',compact('pregunta'));
     }
 
+    /* Recive los datos de un comentario de un post */
     public function commentPregunta(Request $request,$id){
         $respuesta = $request->validate([
             'contenido' => 'required|string'
@@ -91,7 +98,7 @@ class ForoController extends Controller
 
     }
 
-
+    /* Llama la vista de un tema en especifico (asignatura) */
     public function tema($id){
         $asignatura = Asignatura::find($id);
         if($asignatura == NULL) {
@@ -101,6 +108,7 @@ class ForoController extends Controller
 
     }
 
+    /* Llama a la vista de el creador de post o preguntas */
     public function crearView(){
         return view('foro.creatorPost');
     }

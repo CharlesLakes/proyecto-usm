@@ -10,6 +10,7 @@ use App\Models\Asignatura;
 
 class AsignaturaController extends Controller
 {
+    /* Obtiene la lista de todas las asignaturas solo obteniendo la sigla y la id */
     public function obtenerAsignaturas(){
         $respuesta = Asignatura::all();
         $lista = [];
@@ -21,11 +22,14 @@ class AsignaturaController extends Controller
         }
         return $lista;
 
-        
     }
+    
+    /* La pagina de inscripcion a la asignatura */
     public function inscripcion(){
         return view('page.inscAsignatura');
     }
+
+    /* Procesa la inscripcion de las asignatuas */
     public function processInscripcion(Request $request){
 
         $inputs = $request->input('listaAsignatura');
@@ -37,7 +41,9 @@ class AsignaturaController extends Controller
         $inscritas = [];
 
         foreach ($inputs as $value) {
-            if(Asignatura::where('id',$value)->first() != NULL){
+            /* Se comprueba si la asignatura existe y que no te hayas inscrito antes */
+            if(Asignatura::where('id',$value)->first() != NULL 
+            && Auth::user()->asignatura()->where('id',$value)->first() == NULL){
                 $inscritas[] = $value['id'];
             }
         }

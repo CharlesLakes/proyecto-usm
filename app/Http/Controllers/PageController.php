@@ -11,16 +11,19 @@ use App\Models\Asignatura;
 
 class PageController extends Controller
 {
+    /* LLama a la vista de bienvenida */
     public function inicio(){
         return view('page.bienvenida');
     }
 
+    /* Llama a la vista de el panel */
     public function panel(){
-        $total = 20;
-        $data = [];
+        $total = 20; // Cantidad de quiz por mes
+        $data = []; // Se guardan los datos de los avances
 
-        $fecha = new \DateTime("now");
+        $fecha = new \DateTime("now"); //Fecha actual
       
+        // Se recorren los quiz que a realizado el usuario para contarlos 
         foreach(Auth::user()->quiz as $item){
             $temp_fecha = new \DateTime($item->pivot->get()[0]->created_at);
             if($temp_fecha->format("y-m") == $fecha->format("y-m")){
@@ -33,10 +36,11 @@ class PageController extends Controller
             };      
         }
         
-        $asignaturas = Auth::user()->asignaturas;
+        $asignaturas = Auth::user()->asignaturas; // Todas las asignaturas inscritas
 
-        $leaderboard = [];
+        $leaderboard = []; // la tavla de los puntajes
 
+        // Se cuentan los quiz hechos por el usuario en total
         foreach(User::get() as $user){
             $leaderboard[] = [
                 'obj' => $user,
@@ -44,6 +48,7 @@ class PageController extends Controller
             ];
         }
 
+        // 
         $leaderboard =  collect($leaderboard)->sortBy('puntaje')->reverse()->toArray();
         $leaderboard = \array_slice($leaderboard,0,5,FALSE);
 
