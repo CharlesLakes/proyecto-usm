@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
     /* Comprobar si tiene session iniciada o no , si no manda a logeo o register */
     public function formLogin(){
@@ -127,6 +127,25 @@ class LoginController extends Controller
         Auth::user()->update($updates);
         return redirect()->route('panel');
         
+    }
+
+    public function getImageUser($id){
+        $user = User::find($id);
+        if($user == NULL){
+            return response()->json([
+                'message' => 'usuario inexistente.',
+                500
+            ]);
+        }
+
+        if($user->image_user == ''){
+            return redirect("https://www.softzone.es/app/uploads/2018/04/guest.png");
+        }
+
+        return response(\base64_decode(str_replace('data:image/png;base64,','',(Storage::get($user->image_user))))
+                )->withHeaders([
+                    'content-type' => 'image/png'
+                ]);
     }
 
 

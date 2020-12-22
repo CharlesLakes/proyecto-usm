@@ -26,17 +26,10 @@
       <th scope="row">{{$post->id}}</th>
       <td class="d-flex">
         <div class="container-img-user mr-2">
-            @if ($post->user->image_user != '')
-                <img
-                  src="{{Storage::get($post->user->image_user)}}"
-                  alt="Imagen de usuario"
-                />
-            @else 
-                <img
-                    src="https://www.softzone.es/app/uploads/2018/04/guest.png"
-                    alt="Imagen de usuario"
-                />
-            @endif
+          <img
+            src="{{ route("imageUser",['id' => $post->user->id]) }}"
+            alt="Imagen de usuario"
+          />
         </div> 
         {{$post->user->username}}
       </td>

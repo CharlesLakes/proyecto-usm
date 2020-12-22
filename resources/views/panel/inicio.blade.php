@@ -56,17 +56,10 @@
               <p>{{$video->title}}</p>
               <div class="container-user">
                 <div class="icon">
-                    @if ($video->user->image_user != '')
                     <img
-                      src="{{Storage::get($video->user->image_user)}}"
+                      src="{{ route("imageUser",['id' => $video->user->id]) }}"
                       alt="Imagen de usuario"
                     />
-                    @else 
-                    <img
-                        src="https://www.softzone.es/app/uploads/2018/04/guest.png"
-                        alt="Imagen de usuario"
-                    />
-                    @endif
                   </div>
                   <h5>{{$video->user->username}}</h5>
               </div>

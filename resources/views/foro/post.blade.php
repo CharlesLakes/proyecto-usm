@@ -17,17 +17,10 @@
         </div>
         <span class="font-italic" style="display: flex;"> 
             <div class="container-img-user mr-2">
-                @if ($pregunta->user->image_user != '')
-                    <img
-                      src="{{Storage::get($pregunta->user->image_user)}}"
+                <img
+                      src="{{ route("imageUser",['id' => $pregunta->user->id]) }}"
                       alt="Imagen de usuario"
                     />
-                @else 
-                    <img
-                        src="https://www.softzone.es/app/uploads/2018/04/guest.png"
-                        alt="Imagen de usuario"
-                    />
-                @endif
             </div> 
         {{$pregunta->user->username}}
     </span>
@@ -45,17 +38,10 @@
             </div>
         <span class="font-italic d-flex"> 
                 <div class="container-img-user mr-2">
-                    @if ($comm->user->image_user != '')
-                        <img
-                          src="{{Storage::get($comm->user->image_user)}}"
-                          alt="Imagen de usuario"
-                        />
-                    @else 
-                        <img
-                            src="https://www.softzone.es/app/uploads/2018/04/guest.png"
-                            alt="Imagen de usuario"
-                        />
-                    @endif
+                    <img
+                      src="{{ route("imageUser",['id' => $comm->user->id]) }}"
+                      alt="Imagen de usuario"
+                    />
                 </div> 
             {{$comm->user->username}}
         </span>

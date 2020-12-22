@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\VideoController;
@@ -22,13 +22,13 @@ use App\Http\Controllers\ForoController;
 Route::get("/",[PageController::class,'inicio'])->name('index');
 
 // Route Login
-Route::get("/login", [LoginController::class, "formLogin"])->name("login");
-Route::post("/login", [LoginController::class, "processLogin"])->name("processLogin");
-Route::get("/logout",[LoginController::class, "logout"])->name("logout");
+Route::get("/login", [UserController::class, "formLogin"])->name("login");
+Route::post("/login", [UserController::class, "processLogin"])->name("processLogin");
+Route::get("/logout",[UserController::class, "logout"])->name("logout");
 
 // Route register
-Route::get("/register",[LoginController::class, "formRegister"])->name("register");
-Route::post("/register",[LoginController::class, "processRegister"])->name("processRegister");
+Route::get("/register",[UserController::class, "formRegister"])->name("register");
+Route::post("/register",[UserController::class, "processRegister"])->name("processRegister");
 
 
 
@@ -44,8 +44,8 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::get("/panel/video",[PageController::class, "panelVideo"])->name("panelVideo");
     Route::get("/panel/foro",[PageController::class,"panelForo"])->name("panelForo");
 
-    Route::get("/editar-perfil",[LoginController::class, "changeData"])->name("cambiarDatosUser");
-    Route::post("/editar-perfil",[LoginController::class, "processChangeData"]);
+    Route::get("/editar-perfil",[UserController::class, "changeData"])->name("cambiarDatosUser");
+    Route::post("/editar-perfil",[UserController::class, "processChangeData"]);
     //Route::post("/video/create",[VideoController::class, "crear"]);
 
     Route::get("/quiz/{id}",[QuizController::class,"quizView"])->where(['id' => '[0-9]+'])->name("quizId");
@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::get("/foro/tema/{id}",[ForoController::class, "tema"])->name("foroTema");
     Route::get("/foro/post/{id}",[ForoController::class, "ReadPregunta"])->where(['id' => '[0-9]+'])->name("foroPost");
     Route::post("/foro/post/{id}",[ForoController::class, "commentPregunta"])->where(['id' => '[0-9]+']);
+
+    Route::get("/user/image/{id}",[UserController::class, "getImageUser"])->name("imageUser");
     
 });
 

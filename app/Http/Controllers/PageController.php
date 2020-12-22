@@ -62,7 +62,7 @@ class PageController extends Controller
         /* Se toman los 5 videos mas recientes */
         $videos = $videos->sortByDesc('created_at')->slice(0,5);
 
-        return view('page.inicio',compact("data","total","videos","asignaturas","leaderboard"));
+        return view('panel.inicio',compact("data","total","videos","asignaturas","leaderboard"));
     }
 
     /* se llama a la vista que tendra todos los quiz segun asignatura */

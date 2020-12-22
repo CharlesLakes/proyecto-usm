@@ -43,7 +43,7 @@ class AsignaturaController extends Controller
         foreach ($inputs as $value) {
             /* Se comprueba si la asignatura existe y que no te hayas inscrito antes */
             if(Asignatura::where('id',$value)->first() != NULL 
-            && Auth::user()->asignatura()->where('id',$value)->first() == NULL){
+            && Auth::user()->asignaturas->where('id',$value)->first() == NULL){
                 $inscritas[] = $value['id'];
             }
         }
