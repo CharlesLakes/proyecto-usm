@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class QuizController extends Controller
 {
 
+    /* Llama a la vista de el creador de quiz */
     public function crearView(){
         return view('quiz.creatorQuiz');
     }
 
+    /* Crea una quiz segun una asignatura */
     public function crear(Request $request){
         $respuesta = $request->validate([
             'title' => 'required|string',
@@ -40,6 +42,7 @@ class QuizController extends Controller
        return redirect()->route('panelQuiz');
     }
 
+    /*  */
     public function recibirRespuestas(Request $request,$id_quiz){
         $respuesta = $request->validate([
             'respuestas' => 'required|array',
