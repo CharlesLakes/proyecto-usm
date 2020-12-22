@@ -313,6 +313,25 @@ main {
     align-items: center;
 }
 
+.card .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.card .icon img {
+    width: 100%;
+}
+
+.card .container-user {
+    display: flex;
+    align-items: center;
+}
+
 .add-quiz-or-video {
     display: block;
     width: 100%;
