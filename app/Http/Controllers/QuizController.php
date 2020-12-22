@@ -42,7 +42,7 @@ class QuizController extends Controller
        return redirect()->route('panelQuiz');
     }
 
-    /*  */
+    /* Recibe la respuesta de las quiz */
     public function recibirRespuestas(Request $request,$id_quiz){
         $respuesta = $request->validate([
             'respuestas' => 'required|array',
@@ -54,18 +54,24 @@ class QuizController extends Controller
             return "Quiz no existe";
         }
 
-        $quiz = $quiz->questions;
+        $questions = $quiz->questions;
         $puntos = 0;
         $totales = 0;
-        foreach(json_decode($quiz,1) as $key => $value){
+        foreach(json_decode(questions,1) as $key => $value){
             $totales++;
-            if(array_key_exists($key,$respuesta["respuestas"]) && $value["correcta"] == $respuesta["respuestas"][$key]["value"]){
+            if(array_key_exists($key,$respuesta["respuestas"]) 
+            && $value["correcta"] == $respuesta["respuestas"][$key]["value"]){
                 $puntos++;
             }
         }
     
-
-        Auth::user()->quiz()->attach($id_quiz,['points' => $puntos,'total' => $totales]);
+        if($puntos == $totales){
+            if(Auth::user()->quiz->where('id',$id_quiz)->first() != NULL){
+                Auth::user()->quiz()->detach($id_quiz);
+            }
+            Auth::user()->quiz()->attach($id_quiz,['points' => $puntos,'total' => $totales]);
+        }
+        
 
         return array(
             'puntos' => $puntos,
