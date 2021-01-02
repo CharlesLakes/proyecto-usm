@@ -35,7 +35,12 @@
       </td>
       <td>{{$post->asunto}}</td>
       <td>{{$post->created_at}}</td>
-      <td><a href="{{route("foroPost",["id" => $post->id])}}"><button class="btn btn-primary">Ir</button></a></td>
+      <td>
+        <a href="{{route("foroPost",["id" => $post->id])}}"><button class="btn btn-primary">Ir</button></a>
+        @if($post->user->id == Auth::user()->id || !Auth::user()->hasRole('user'))
+          <a href="{{route("DeletePost",["id" => $post->id])}}"><button class="btn btn-danger">Eliminar</button></a>
+        @endif
+      </td>
     </tr>
     @endforeach
     

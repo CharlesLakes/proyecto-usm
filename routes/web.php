@@ -58,11 +58,12 @@ Route::group(['middleware' => ['auth:user']], function () {
 
     Route::get("/foro/post/create",[ForoController::class, "crearView"])->name("creatorPost");
     Route::post("/foro/post/create",[ForoController::class, "CrearPregunta"]);
-
+    Route::get("/foro/delete/{id}",[ForoController::class, "DeletePregunta"])->where(['id' => '[0-9]+'])->name('DeletePost');
 
     Route::get("/foro/tema/{id}",[ForoController::class, "tema"])->name("foroTema");
     Route::get("/foro/post/{id}",[ForoController::class, "ReadPregunta"])->where(['id' => '[0-9]+'])->name("foroPost");
     Route::post("/foro/post/{id}",[ForoController::class, "commentPregunta"])->where(['id' => '[0-9]+']);
+    Route::get("/foro/post/delete/{id}",[ForoController::class, "DeleteComment"])->where(['id' => '[0-9]+'])->name("DeleteComment");
 
     Route::get("/user/image/{id}",[UserController::class, "getImageUser"])->name("imageUser");
     

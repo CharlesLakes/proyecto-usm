@@ -61,6 +61,9 @@
         "post-install-cmd": [
             "php artisan clear-compiled",
             "chmod -R 777 public/"
+        ],
+        "websocket": [
+            "python socket-proyecto-usm/main.py"
         ]
     }
 }

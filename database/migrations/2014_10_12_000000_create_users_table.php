@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('role');
             $table->string('image_user');
+            $table->longText('websocket_token');
             $table->string('username');
             $table->string('email')->unique();
             $table->integer('email_verification');

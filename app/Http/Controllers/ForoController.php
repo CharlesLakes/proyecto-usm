@@ -59,14 +59,14 @@ class ForoController extends Controller
 
     /* Elimina las preguntas que puedes eliminar segun el permiso*/
     public function DeletePregunta($id){
-        $preguntaEliminar = Preguntas::findOrFail($id);
+        $preguntaEliminar = Post::find($id);
 
-        if($preguntaEliminar->user_id != Auth::user()->id && Auth::user()->hasRole('user')){
-            return "No puedes eliminar este post";
+        if($preguntaEliminar->user->id != Auth::user()->id && Auth::user()->hasRole('user')){
+            return back();
         }
 
         $preguntaEliminar->delete();
-        return 'Pregunta eliminada';
+        return back();
     }
     /* Se obtienen los datos de el post o pregunta de la base de datos
         y se muestra en la vista */
@@ -96,6 +96,16 @@ class ForoController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function DeleteComment($id){
+        $comm = Comment::find($id);
+
+        if($comm->user_id != Auth::user()->id && Auth::user()->hasRole('user')){
+            return back();
+        }
+        $comm->delete();
+        return back();
     }
 
     /* Llama la vista de un tema en especifico (asignatura) */

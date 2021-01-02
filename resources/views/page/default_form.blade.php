@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title')</title>
+    <meta name="user_id" content="{{Auth::user()->id}}">
+    <meta name="websocket_token" content="{{Auth::user()->websocket_token}}"> 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -89,6 +91,28 @@
     $(document).ready(function(){
       procesamientoDeDiagonal();
     $(window).resize(procesamientoDeDiagonal);
+    });
+
+
+    var ws_noti = new WebSocket("ws://localhost:6789/notificaciones");
+    ws_noti.onopen = function () {
+        let user_id = $('meta[name="user_id"]').attr("content");
+        let websocket_token = $('meta[name="websocket_token"]').attr("content");
+        ws_noti.send(
+            JSON.stringify({
+                id: parseInt(user_id),
+                token: websocket_token,
+            })
+        );
+    };
+
+    $("#btn-comment").click(function(){
+      ws_noti.send(JSON.stringify({
+        title:document.title,
+        id:parseInt(
+          $("#content-user-info").data("user-id")
+        )
+      }))
     });
 
     </script>

@@ -33,6 +33,8 @@ class UserController extends Controller
         ]);
         /* Comprobando session */
         if(Auth::attempt($credentials)){
+            Auth::user()->websocket_token = \Str::random(60);
+            Auth::user()->save();
             if(count(Auth::user()->asignaturas) < 1){
                 return redirect()->route('inscripcion');
             }
@@ -69,7 +71,8 @@ class UserController extends Controller
             'username' => $credentials['username'],
             'email' => strtolower($credentials['email']),
             'password' => $credentials['password'],
-            'email_verification' => 0
+            'email_verification' => 0,
+            'websocket_token' => ''
         ]);
 
         return redirect()->route('index');

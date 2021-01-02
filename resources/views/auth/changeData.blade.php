@@ -67,33 +67,36 @@
       <div class="container-input">
         <form action="" method="POST">
           @csrf
+          <span>Obligatorio:</span>
+          <input
+            type="password"
+            class="form form-control mb-3"
+            placeholder="Contraseña actual"
+            name="password"
+            id="password"
+            required
+          />
           {!!$errors->first('imageUser','<span class="alert alert-danger">:message</span>') !!}
           {!!$errors->first('newPassword','<span class="alert alert-danger">:message</span>') !!}
           {!!$errors->first('msg','<span class="alert alert-danger">:message</span>') !!}
+          <span>Optativos:</span>
           <input type="hidden" id="imageUser" name="imageUser" />
           <input
             type="text"
             class="form form-control"
-            placeholder="Nombre de usuario "
+            placeholder="Nombre de usuario"
             name="newUsername"
           />
           <input
             type="password"
             class="form form-control"
-            placeholder="Ingresa la contrasela actual (obligatorio)"
-            name="password"
-            required
-          />
-          <input
-            type="password"
-            class="form form-control"
-            placeholder="Ingresa la nueva contraseña"
+            placeholder="Nueva contraseña"
             name="newPassword"
           />
           <input
             type="password"
             class="form form-control"
-            placeholder="Ingresa la nueva contraseña"
+            placeholder="Repita la nueva contraseña"
             name="reNewPassword"
           />
           <button class="btn btn-primary" id="editar-perfil">

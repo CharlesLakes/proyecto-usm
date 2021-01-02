@@ -25,7 +25,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'email_verification'
+        'email_verification',
+        'websocket_token'
     ];
 
     /**
