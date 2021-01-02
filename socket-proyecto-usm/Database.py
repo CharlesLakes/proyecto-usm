@@ -20,7 +20,7 @@ class DataBaseConnect:
         self.cursor.execute(sql)
         return self.cursor.fetchall()
 
-f = open("../.env")
+f = open(".env")
 envData = f.read().split("\n")
 
 Instance = DataBaseConnect(

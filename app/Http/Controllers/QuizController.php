@@ -57,7 +57,7 @@ class QuizController extends Controller
         $questions = $quiz->questions;
         $puntos = 0;
         $totales = 0;
-        foreach(json_decode(questions,1) as $key => $value){
+        foreach(json_decode($questions,1) as $key => $value){
             $totales++;
             if(array_key_exists($key,$respuesta["respuestas"]) 
             && $value["correcta"] == $respuesta["respuestas"][$key]["value"]){

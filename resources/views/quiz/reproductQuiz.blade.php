@@ -39,6 +39,7 @@
       src="https://kit.fontawesome.com/5b04273445.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/quiz.css')}}" />
   </head>
   <body>

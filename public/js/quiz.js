@@ -68,8 +68,20 @@ function terminarIntento() {
             respuestas: respuestas,
         },
         success: function (data) {
-            alert("Los resultados fueron: " + data.puntos + "/" + data.totales);
-            window.location.replace(window.location.origin + "/panel");
+            swal({
+                title: "Resultados:",
+                text:
+                    (data.puntos == data.totales ? "Felicitaciones !!!" : "") +
+                    "\n" +
+                    data.puntos +
+                    "/" +
+                    data.totales,
+                button: "Volver al panel",
+            }).then(function (value) {
+                if (value) {
+                    window.location.replace(window.location.origin + "/panel");
+                }
+            });
         },
         error: function () {
             alert("A ocurrido un error en enviar el quiz");
