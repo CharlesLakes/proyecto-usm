@@ -28,17 +28,23 @@ function procesamientoDePreguntas(data, numero) {
         if (data[indice].numero == numero) {
             $("#text-quiz p").text(numero + ") " + data[indice].contenido);
             $("#option-container ul").html("");
+            var a = 0;
             for (let respuesta in data[indice].respuestas) {
                 var temp = $("#option-container ul").html();
                 $("#option-container ul").html(
                     temp +
                         `
           <li class="option-quiz" data-option="${respuesta}">
-            <input type="radio"/>
+            <input type="radio" ${
+                indice in respuestas && a + 1 == respuestas[indice].value
+                    ? "checked"
+                    : ""
+            }/>
             ${data[indice].respuestas[respuesta]}
           </li>
           `
                 );
+                a++;
             }
 
             MathJax.typeset();
