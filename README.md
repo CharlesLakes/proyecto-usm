@@ -6,6 +6,9 @@
 
 La intención de este proyecto es ayudar al estudio de los alumnos de la USM creando un espacio colaborativo donde se podrán hacer cuestionarios o videos hechos por alumnos.
 
+### Video
+<a href="https://drive.google.com/file/d/1pesAnxNEWIN5BUCScIaX6hIWo-Lk853w/view?usp=sharing">Ver video</a>
+
 ### Funcionalidades
 
 -   Sistema de cuenta con login, register y cambios de perfil (Imagen de usuario, Nombre y contraseña).
