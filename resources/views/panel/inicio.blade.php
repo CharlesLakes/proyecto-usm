@@ -28,16 +28,21 @@
         </div>
       </div>
       <div class="container-stats">
-        <h3>Leaderboard</h3>
+        <h3>Tabla de clasificación</h3>
         <div class="leaderboard">
           <ul>
-            {{$i = 0}}
+            @php
+                $i = 0;
+            @endphp
             @foreach ($leaderboard as $key => $item)
-            <li>
-              <span>{{$i + 1}}) {{$item["obj"]->username}}</span>
-              <span>{{$item["puntaje"]}}</span>
-            </li>
-            {{$i++}}
+              <li>
+                <span>{{$i + 1}}) {{$item["obj"]->username}}</span>
+                <span>{{$item["puntaje"]}}</span>
+              </li>
+              @php
+                $i++;
+              @endphp
+            
             @endforeach
             
             
