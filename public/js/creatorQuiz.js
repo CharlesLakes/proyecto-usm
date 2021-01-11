@@ -91,13 +91,19 @@ $(document).ready(function () {
               <p>N° correcta:</p>
               <select name='questions[${
                   i + 1
-              }][correcta]' class="form form-control correcta" value="${
-                        pregunta.correcta ? pregunta.correcta : ""
-                    }">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+              }][correcta]' class="form form-control correcta">
+                    <option value="1" ${
+                        pregunta.correcta == 1 ? "selected" : ""
+                    }>1</option>
+                    <option value="2" ${
+                        pregunta.correcta == 2 ? "selected" : ""
+                    }>2</option>
+                    <option value="3" ${
+                        pregunta.correcta == 3 ? "selected" : ""
+                    }>3</option>
+                    <option value="4" ${
+                        pregunta.correcta == 4 ? "selected" : ""
+                    }>4</option>
               </select>
               <button
               class="btn btn-primary mt-2 quitar-pregunta"

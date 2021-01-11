@@ -57,7 +57,7 @@
       <button id="btn-show-quiz">Mostrar preguntas</button>
       <div class="number-quiz-container" id="number-quiz-container"></div>
       <div class="btn-end-container">
-        <button>Terminar intento</button>
+        <button id="btn-terminar">Terminar intento</button>
       </div>
     </div>
     <div id="btn-anterior" class="btn-control">

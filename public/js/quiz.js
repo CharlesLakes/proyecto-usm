@@ -121,6 +121,11 @@ $(document).ready(function () {
             respuestas[numeroPregunta] = {
                 value: parseInt(e.currentTarget.dataset.option),
             };
+            for (var element of $(".box-number-quiz")) {
+                if (element.dataset.numero in respuestas) {
+                    element.style = "color:white;background:#007af9;";
+                }
+            }
         });
     };
     eventosRespuestas();
@@ -138,5 +143,13 @@ $(document).ready(function () {
         numeroPregunta--;
         procesamientoDePreguntas(preguntas, numeroPregunta);
         eventosRespuestas();
+    });
+    $(".box-number-quiz").click(function (e) {
+        numeroPregunta = e.target.dataset.numero;
+        procesamientoDePreguntas(preguntas, numeroPregunta);
+        eventosRespuestas();
+    });
+    $("#btn-terminar").click(function () {
+        terminarIntento();
     });
 });
