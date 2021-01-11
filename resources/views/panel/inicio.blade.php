@@ -31,11 +31,13 @@
         <h3>Leaderboard</h3>
         <div class="leaderboard">
           <ul>
+            {{$i = 0}}
             @foreach ($leaderboard as $key => $item)
             <li>
-              <span>{{$key + 1}}) {{$item["obj"]->username}}</span>
+              <span>{{$i + 1}}) {{$item["obj"]->username}}</span>
               <span>{{$item["puntaje"]}}</span>
             </li>
+            {{$i++}}
             @endforeach
             
             
